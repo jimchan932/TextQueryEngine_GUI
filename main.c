@@ -113,8 +113,7 @@ void textqueryInterface()
 
 void textquerySignals()
 {
-
-	g_signal_connect(G_OBJECT(button_paragraph_text), "clicked", G_CALLBACK(open_paragraph_file), NULL);
+    g_signal_connect(G_OBJECT(button_paragraph_text), "clicked", G_CALLBACK(open_paragraph_file), NULL);
     g_signal_connect(G_OBJECT(button_search_query), "clicked", G_CALLBACK(showQueryResult), NULL);		
 }
 	
@@ -122,11 +121,11 @@ void open_paragraph_file(GtkWidget *widget, gpointer data)
 {
 	if(contains_text_flag) return;
 	paragraph_file_select = gtk_file_chooser_dialog_new ("Open File",
-														 GTK_WINDOW(window),
-														 GTK_FILE_CHOOSER_ACTION_OPEN,
-														 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-														 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
-														 NULL);
+				                             GTK_WINDOW(window),
+						             GTK_FILE_CHOOSER_ACTION_OPEN,
+							     GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+							     GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+							     NULL);
 
 	if (gtk_dialog_run(GTK_DIALOG(paragraph_file_select)) == GTK_RESPONSE_ACCEPT)
 	{
@@ -195,10 +194,10 @@ void showQueryResult(GtkWidget *widget, gpointer data)
 	gtk_text_buffer_get_end_iter(buffer_query_result, &end2);
 
 
-    printResult(&table, hfunc, queryText.words, queryText.num_of_queries, inputParagraph.sentences);	
+    	printResult(&table, hfunc, queryText.words, queryText.num_of_queries, inputParagraph.sentences);	
 	queryResultParagraph = processText("result.txt", &queryResultByteSize);	
 	
-    gtk_text_buffer_insert(buffer_query_result, &end2, queryResultParagraph, queryResultByteSize);
+    	gtk_text_buffer_insert(buffer_query_result, &end2, queryResultParagraph, queryResultByteSize);
 	contains_text_flag = true;
 	g_free(queryParagraph);
 	g_free (filename);	
